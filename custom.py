@@ -8,11 +8,10 @@ camera_config = picam2.create_still_configuration(transform=Transform(vflip=True
 picam2.configure(camera_config)
 
 
-def take_picture(fileName):
+def take_picture(filename):
     picam2.start()
-    time.sleep(2)
-    picam2.capture_file(fileName)
-    picam2.stop()
+    time.sleep(0.5)
+    picam2.capture_file(filename)
 
 
 # take_picture()
