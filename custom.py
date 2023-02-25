@@ -4,7 +4,7 @@ import time
 from libcamera import Transform
 
 picam2 = Picamera2()
-camera_config = picam2.create_still_configuration(transform=Transform(vflip=True))
+camera_config = picam2.create_preview_configuration(transform=Transform(vflip=True))
 picam2.configure(camera_config)
 
 
