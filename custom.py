@@ -12,16 +12,13 @@ def take_picture(filename):
     picam2.start()
     time.sleep(0.5)
     picam2.capture_file(filename)
+    picam2.stop()
 
-
-# take_picture()
 
 # Set up loop conditions
 pictureNumber = 0
 
 while True:
-
     take_picture(f'timelapse/Picture{pictureNumber}.jpg')
-    time.sleep(300)
+    time.sleep(20)
     pictureNumber += 1
-
