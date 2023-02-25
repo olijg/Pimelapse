@@ -1,3 +1,4 @@
-from picamera import PiCamera
-camera = PiCamera()
-camera.capture('test.jpg')
+from picamera2 import Picamera2
+
+camera = Picamera2()
+camera.start_and_capture_file("test.jpg")
