@@ -27,8 +27,8 @@ pictureNumber = 0
 
 while True:
     currentTime = time.localtime()
-    sunrise = sun.get_sunrise_time()
-    sunset = sun.get_sunset_time()
+    sunrise = sun.get_local_sunrise_time()
+    sunset = sun.get_local_sunset_time()
     if currentTime.tm_hour >= sunrise.hour & currentTime.tm_min > sunrise.minute:
         if currentTime.tm_hour <= sunset.hour & currentTime.tm_min < sunset.minute:
             take_picture(f'timelapse/Picture{pictureNumber}.jpg')
