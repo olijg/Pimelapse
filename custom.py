@@ -21,7 +21,7 @@ pictureNumber = 0
 
 while True:
 
-    take_picture(f'/timelapse/Picture{pictureNumber}.jpg')
+    take_picture(f'timelapse/Picture{pictureNumber}.jpg')
     time.sleep(300)
     pictureNumber += 1
 
