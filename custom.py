@@ -29,13 +29,13 @@ while True:
     currentTime = time.localtime()
     sunrise = sun.get_local_sunrise_time()
     sunset = sun.get_local_sunset_time()
-    if currentTime.tm_hour >= sunrise.hour & currentTime.tm_min > sunrise.minute:
-        if currentTime.tm_hour <= sunset.hour & currentTime.tm_min < sunset.minute:
-            take_picture(f'timelapse/Picture{pictureNumber}.jpg')
-            time.sleep(1200)
-            pictureNumber += 1
+    if currentTime.tm_hour <= sunrise.hour & currentTime.tm_min > sunrise.minute:
+        if currentTime.tm_hour >= sunset.hour & currentTime.tm_min > sunset.minute:
+            time.sleep(60)
         else:
             time.sleep(60)
     else:
-        time.sleep(60)
+        take_picture(f'timelapse/Picture{pictureNumber}.jpg')
+        time.sleep(1200)
+        pictureNumber += 1
 
