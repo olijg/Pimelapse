@@ -1,7 +1,8 @@
+from libcamera import Transform
 from picamera2 import Picamera2
 import time
-
-from libcamera import Transform
+from suntime import Sun, SunTimeException
+import datetime
 
 picam2 = Picamera2()
 camera_config = picam2.create_still_configuration(transform=Transform(vflip=True))
@@ -15,10 +16,26 @@ def take_picture(filename):
     picam2.stop()
 
 
+# Co-ordinates for sunrise and sunset times
+latitude = 53.47
+longitude = -2.283
+
+sun = Sun(latitude, longitude)
+
 # Set up loop conditions
 pictureNumber = 0
 
 while True:
-    take_picture(f'timelapse/Picture{pictureNumber}.jpg')
-    time.sleep(20)
-    pictureNumber += 1
+    currentTime = time.localtime()
+    sunrise = sun.get_sunrise_time()
+    sunset = sun.get_sunset_time()
+    if currentTime.tm_hour >= sunrise.hour & currentTime.tm_min > sunrise.min:
+        if currentTime.tm_hour <= sunset.hour & currentTime.tm_min < sunset.min:
+            take_picture(f'timelapse/Picture{pictureNumber}.jpg')
+            time.sleep(1200)
+            pictureNumber += 1
+        else:
+            time.sleep(60)
+    else:
+        time.sleep(60)
+
