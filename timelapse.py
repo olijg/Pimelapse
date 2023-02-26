@@ -29,8 +29,8 @@ def the_sun_is_up():
         sun = Sun(latitude, longitude)
         sunrise = sun.get_local_sunrise_time()
         sunset = sun.get_local_sunset_time()
-    except:
-        SunTimeException
+    except SunTimeException as e:
+        print("Error: {0}.".format(e))
 
     if currentTime.tm_hour <= sunrise.hour and currentTime.tm_min > sunrise.minute:
         return False
