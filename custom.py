@@ -20,8 +20,6 @@ def take_picture(filename):
 latitude = 53.47
 longitude = -2.283
 
-
-
 # Set up loop conditions
 pictureNumber = 0
 
@@ -36,11 +34,10 @@ while True:
 
     currentTime = time.localtime()
 
-    if currentTime.tm_hour <= sunrise.hour & currentTime.tm_min > sunrise.minute:
-        if currentTime.tm_hour >= sunset.hour & currentTime.tm_min > sunset.minute:
-            time.sleep(60)
-        else:
-            time.sleep(60)
+    if currentTime.tm_hour <= sunrise.hour and currentTime.tm_min > sunrise.minute:
+        time.sleep(60)
+    elif currentTime.tm_hour >= sunset.hour and currentTime.tm_min > sunset.minute:
+        time.sleep(60)
     else:
         take_picture(f'timelapse/Picture{pictureNumber}.jpg')
         time.sleep(1200)
