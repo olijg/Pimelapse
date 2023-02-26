@@ -10,9 +10,7 @@ picam2.configure(camera_config)
 
 
 def take_picture(filename):
-    picam2.start()
-    time.sleep(0.5)
-    picam2.capture_file(filename)
+    picam2.start_and_capture_file(filename)
     picam2.stop()
 
 
