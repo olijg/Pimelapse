@@ -39,6 +39,6 @@ while True:
     elif currentTime.tm_hour >= sunset.hour and currentTime.tm_min > sunset.minute:
         time.sleep(60)
     else:
-        take_picture(f'timelapse/Picture{pictureNumber}.jpg')
+        take_picture(f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg')
         time.sleep(1200)
         pictureNumber += 1
