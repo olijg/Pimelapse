@@ -20,10 +20,10 @@ def take_picture(filename):
 latitude = 53.47
 longitude = -2.283
 
-# Set up loop conditions
-pictureNumber = 0
 
-while True:
+def the_sun_is_up():
+    global currentTime
+    currentTime = time.localtime()
 
     try:
         sun = Sun(latitude, longitude)
@@ -32,13 +32,19 @@ while True:
     except:
         SunTimeException
 
-    currentTime = time.localtime()
-
     if currentTime.tm_hour <= sunrise.hour and currentTime.tm_min > sunrise.minute:
-        time.sleep(60)
+        return False
     elif currentTime.tm_hour >= sunset.hour and currentTime.tm_min > sunset.minute:
-        time.sleep(60)
+        return False
     else:
-        take_picture(f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg')
+        return True
+
+
+while True:
+
+    if the_sun_is_up():
+        take_picture(
+            f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg')
         time.sleep(1200)
-        pictureNumber += 1
+    else:
+        time.sleep(60)
