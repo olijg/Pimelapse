@@ -24,6 +24,10 @@ def the_sun_is_up():
     global currentTime
     currentTime = time.localtime()
 
+
+def pad_with_zeros(original: int):
+    return f'{original}'.rjust(2, "0")
+
     try:
         sun = Sun(latitude, longitude)
         sunrise = sun.get_local_sunrise_time()
@@ -43,7 +47,11 @@ while True:
 
     if the_sun_is_up():
         take_picture(
-            f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg')
+            f'timelapse/{currentTime.tm_year}\
+            -{currentTime.tm_mon}\
+            -{pad_with_zeros(currentTime.tm_mday)}\
+            -{pad_with_zeros(currentTime.tm_hour)}\
+            -{pad_with_zeros(currentTime.tm_min)}.jpg')
         time.sleep(1200)
     else:
         time.sleep(300)
