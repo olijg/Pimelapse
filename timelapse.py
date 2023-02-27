@@ -45,4 +45,4 @@ while True:
             f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg')
         time.sleep(1200)
     else:
-        time.sleep(60)
+        time.sleep(300)
