@@ -12,6 +12,11 @@ picam2.configure(camera_config)
 latitude = 53.47
 longitude = -2.283
 
+def take_picture(filename):
+    picam2.start()
+    time.sleep(0.5)
+    picam2.capture_file(filename)
+    picam2.stop()
 
 def the_sun_is_up():
     global currentTime
@@ -35,10 +40,8 @@ def the_sun_is_up():
 while True:
 
     if the_sun_is_up():
-        picam2.start_and_capture_file(
-            f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg',
-            preview=False)
-        picam2.stop()
+        take_picture(
+            f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg')
         time.sleep(1200)
     else:
         time.sleep(300)
