@@ -36,7 +36,8 @@ while True:
 
     if the_sun_is_up():
         picam2.start_and_capture_file(
-            f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg')
+            f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{currentTime.tm_mday}-{currentTime.tm_hour}-{currentTime.tm_min}.jpg',
+            preview=False)
         picam2.stop()
         time.sleep(1200)
     else:
