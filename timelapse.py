@@ -20,13 +20,13 @@ def take_picture(filename):
     picam2.stop()
 
 
+def pad_with_zeros(original: int):
+    return f'{original}'.rjust(2, "0")
+
+
 def the_sun_is_up():
     global currentTime
     currentTime = time.localtime()
-
-
-def pad_with_zeros(original: int):
-    return f'{original}'.rjust(2, "0")
 
     try:
         sun = Sun(latitude, longitude)
