@@ -1,5 +1,5 @@
 #!/bin/bash
-
+rm out.gif
 ffmpeg \
 	-framerate 24 \
 	-pattern_type glob -i 'timelapse/*.jpg' \
