@@ -52,7 +52,7 @@ while True:
     # Check whether the sun is up and take a picture if it is, otherwise sleep for 10 minutes
     if the_sun_is_up():
         take_picture(
-            f'timelapse/{currentTime.tm_year}-{currentTime.tm_mon}-{pad_with_zeros(currentTime.tm_mday)}-{pad_with_zeros(currentTime.tm_hour)}-{pad_with_zeros(currentTime.tm_min)}.jpg')
+            f'timelapse/{currentTime.tm_year}-{pad_with_zeros(currentTime.tm_mon)}-{pad_with_zeros(currentTime.tm_mday)}-{pad_with_zeros(currentTime.tm_hour)}-{pad_with_zeros(currentTime.tm_min)}.jpg')
         time.sleep(600)
     else:
         time.sleep(600)
